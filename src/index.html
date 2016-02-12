@@ -1,103 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!--
-This is an HTML document. It contains information about how elements in the website
-are arranged. In other words, it describes the layout of a website.
-
-I can't wait to see the resumes you put together!
-
-Cameron Pittman, Udacity Course Developer
--->
-
-<!--
-The <head> of a website generally links to important resources the page will
-need to load. You'll see a lot of <link>s to CSS files for styles and
-<scripts> for JavaScript files to build interactions.
--->
 <head>
   <!-- This tells the browser how to read the document. -->
   <meta charset="utf-8">
-
-  <!-- Tells the browser what the title of this page should be. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Resume</title>
-
-  <!-- Load the page styles. -->
-  <link href="css/style.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.grey-indigo.min.css">
+  <link rel="stylesheet" href="css/main.css">
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
   -->
-<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
-
-  <meta name="viewport" content="width=device-width">
+  <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
 </head>
-<body>
-  <main id="main">
 
-    <!--
-    Everything from here to the <script> tag below is the skeleton of your
-    website. Your code will add information to each of the sections of the
-    resume below. You can pretty easily figure out what each section will
-    display by looking at the id or at what's written between the <h2> tags.
-    -->
-    <header id="header" class="center-content clear-fix">
-      <ul id="topContacts" class="flex-box"></ul>
-    </header>
-    <section style="clear: both;"></section>
-    <section id="workExperience" class="gray">
-      <h2>Work Experience</h2>
-    </section>
-    <section id="projects">
-      <h2>Projects</h2>
-    </section>
-    <section id="education" class="gray">
-      <h2>Education</h2>
-    </section>
-    <section id="map">
-      <h2>Where I've Lived and Worked</h2>
-    </section>
-    <footer id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
+<body>
+
+<a href="#" class="to-top mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect mdl-color--orange-600 mdl-color-text--blue-grey-50"><i class="material-icons">keyboard_arrow_up</i></a>
+
+<div class="custom-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+  <header class="mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+    <div class="mdl-layout__header-row custom-layout-container">
+      <span class="custom-layout__title">résumé</span>
+    </div>
+  </header>
+
+  <div class="custom-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <!--<header class="custom-drawer-header">-->
+    <!--<img src="img/user.jpg" class="avatar" alt="Profile Pic">-->
+    <!--<span class="brand-upper" itemprop="name">Michael Muita</span>-->
+    <!--<a href="tel:+254790406319" class="brand-lower mdl-color-text&#45;&#45;orange-600"><i class="material-icons md-13">&#xE0CD;</i>+254790406319</a>-->
+    <!--<a class="brand-lower mdl-color-text&#45;&#45;orange-600" href="mailto:michael.muita.dev@gmail.com" itemprop="email"><i class="material-icons md-13">&#xE0BE;</i>michael.muita.dev@gmail</a>-->
+    <!--<a class="brand-lower mdl-color-text&#45;&#45;orange-600" href="https://blog.michaelmuita.me" target="_blank"><i class="material-icons md-13">&#xE157;</i>blog.michaelmuita.me</a>-->
+    <!--</header>-->
+
+    <nav class="mdl-navigation mdl-color--blue-grey-800 custom-navigation">
+      <a class="mdl-navigation__link" href="#skills"><i class="material-icons orange-600" role="presentation">
+        &#xE869;</i>Skills</a>
+      <a class="mdl-navigation__link" href="#workExperience"><i class="material-icons orange-600" role="presentation">
+        &#xE8F9;</i>Work Experience</a>
+      <a class="mdl-navigation__link" href="#projects"><i class="material-icons orange-600" role="presentation">
+        &#xE226;</i>Projects</a>
+      <a class="mdl-navigation__link" href="#education"><i class="material-icons orange-600" role="presentation">
+        &#xE86E;</i>Education</a>
+      <a class="mdl-navigation__link" href="#map"><i class="material-icons orange-600" role="presentation">&#xE56A;</i>Locations</a>
+      <a class="mdl-navigation__link" href="#lets-connect"><i class="material-icons orange-600" role="presentation">
+        &#xE7FB;</i>Social</a>
+    </nav>
+  </div>
+
+  <main id="main" class="mdl-layout__content mdl-color--grey-100">
+    <div class="mdl-grid grid-max-width">
+      <!--
+      Everything from here to the <script> tag below is the skeleton of your
+      website. Your code will add information to each of the sections of the
+      resume below. You can pretty easily figure out what each section will
+      display by looking at the id or at what's written between the <h2> tags.
+      -->
+      <header id="header" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <ul id="topContacts" class="flex-box"></ul>
+      </header>
+      <section id="skills" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE869;</i>SKILLS</h2>
+        </div>
+      </section>
+      <section id="workExperience" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE8F9;</i>WORK EXPERIENCE</h2>
+        </div>
+      </section>
+      <section id="projects" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE226;</i>PROJECTS</h2>
+        </div>
+      </section>
+      <section id="education" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE86E;</i>EDUCATION</h2>
+        </div>
+      </section>
+      <section id="map" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">&#xE56A;</i>WHERE I'VE LIVED AND WORKED</h2>
+        </div>
+      </section>
+      <h2 class="orange center-text">LET'S CONNECT</h2>
+
+    </div>
+    <footer id="lets-connect" class="mdl-mini-footer dark-gray">
+      <ul id="footerContacts" class="flex-box">
       </ul>
     </footer>
   </main>
+</div>
+<!--
+jQuery is a common JavaScript library for reading and making changes to the
+Document Object Model (DOM). The DOM is a tree that contains information
+about what is actually visible on a website.
 
-  <!--
-  jQuery is a common JavaScript library for reading and making changes to the
-  Document Object Model (DOM). The DOM is a tree that contains information
-  about what is actually visible on a website.
+While HTML is a static document, the browser converts HTML to the
+DOM and the DOM can change. In fact, JavaScript's power comes from
+its ability to manipulate the DOM, which is essentially a JavaScript
+object. When JavaScript makes something interesting happen on a
+website, it's likely the action happened because JavaScript changed
+the DOM. jQuery is fast and easy to use, but it doesn't do anything
+you can't accomplish with vanilla (regular) JavaScript.
+-->
 
-  While HTML is a static document, the browser converts HTML to the
-  DOM and the DOM can change. In fact, JavaScript's power comes from
-  its ability to manipulate the DOM, which is essentially a JavaScript
-  object. When JavaScript makes something interesting happen on a
-  website, it's likely the action happened because JavaScript changed
-  the DOM. jQuery is fast and easy to use, but it doesn't do anything
-  you can't accomplish with vanilla (regular) JavaScript.
-  -->
-  <script src="js/jquery.min.js"></script>
+<!-- More on helper.js in the  -->
 
-  <!-- More on helper.js in the class -->
-  <script src="js/helper.js"></script>
+<!--
+The next line tells the browser where to download the JavaScript file you'll be
+writing. In resumeBuilder.js, you'll be writing code that builds the resume
+dynamically when this website, index.html, is opened -->
 
-  <!--
-  The next line tells the browser where to download the JavaScript file you'll be
-  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-  dynamically when this website, index.html, is opened.
-  -->
-  <script src="js/resumeBuilder.js"></script>
+<!-- build:js js/combined.min.js -->
+<script src="js/jquery.min.js"></script>
+<script src="js/helper.js"></script>
+<script src="js/resumeBuilder.js"></script>
+<!-- endbuild -->
+
+<script src="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.min.js"></script>
+
+<!--
+These scripts are written in JavaScript. You'll be breaking them down as part of
+a quiz. Essentially, the next few lines are checking to see if you have not
+changed each section of the resume. If you have not made any changes to a section
+of the resume, then that part of the resume does not show up. More on this in the
+course.
+-->
 
 
-  <!--
-  These scripts are written in JavaScript. You'll be breaking them down as part of
-  a quiz. Essentially, the next few lines are checking to see if you have not
-  changed each section of the resume. If you have not made any changes to a section
-  of the resume, then that part of the resume does not show up. More on this in the
-  course.
-  -->
+<!-- Not used, commenting out for documentation archives
 
   <script type="text/javascript">
     // Notice how all of a sudden there's JavaScript inside this HTML
@@ -135,6 +177,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     if(document.getElementById('map') === null) {
       document.getElementById('mapDiv').style.display = 'none';
     }
-  </script>
+  </script> -->
 </body>
 </html>
