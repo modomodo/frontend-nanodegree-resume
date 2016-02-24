@@ -144,11 +144,42 @@ CUSTOM ICON STYLES
   BODY STYLING
 **********************/
 
+/*SKILLS CHART*/
+.skills-holder {
+  text-align: center;
+}
+
+.label {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  margin: 0.2em 0.3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: white;
+  vertical-align: baseline;
+  border-radius: .25em;
+}
+
+.skills-list {
+  padding-bottom: 5px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* WORK STYLES */
+.work-title {
+  font-size: 24px;
+  display: block;
+}
 
 /************************
   FLOATING TO-TOP BUTTON
 ************************/
-a.to-top {
+.to-top {
   display: none;
   position: fixed;
   right: 0;

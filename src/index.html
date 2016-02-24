@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link src="http://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic" rel="stylesheet" type="text/css">
   <title>Resume</title>
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.grey-indigo.min.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.grey-indigo.min.css">
   <link rel="stylesheet" href="css/main.css">
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive
@@ -29,13 +31,13 @@
   </header>
 
   <div class="custom-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-    <!--<header class="custom-drawer-header">-->
-    <!--<img src="img/user.jpg" class="avatar" alt="Profile Pic">-->
-    <!--<span class="brand-upper" itemprop="name">Michael Muita</span>-->
-    <!--<a href="tel:+254790406319" class="brand-lower mdl-color-text&#45;&#45;orange-600"><i class="material-icons md-13">&#xE0CD;</i>+254790406319</a>-->
-    <!--<a class="brand-lower mdl-color-text&#45;&#45;orange-600" href="mailto:michael.muita.dev@gmail.com" itemprop="email"><i class="material-icons md-13">&#xE0BE;</i>michael.muita.dev@gmail</a>-->
-    <!--<a class="brand-lower mdl-color-text&#45;&#45;orange-600" href="https://blog.michaelmuita.me" target="_blank"><i class="material-icons md-13">&#xE157;</i>blog.michaelmuita.me</a>-->
-    <!--</header>-->
+    <header class="custom-drawer-header mdl-layout--large-screen-only">
+    <img src="img/user.jpg" class="avatar" alt="Profile Pic">
+    <span class="brand-upper" itemprop="name">Michael Muita</span>
+    <a href="tel:+254790406319" class="brand-lower mdl-color-text--orange-600"><i class="material-icons md-13">&#xE0CD;</i>+254790406319</a>
+    <a class="brand-lower mdl-color-text--orange-600" href="mailto:michael.muita.dev@gmail.com" itemprop="email"><i class="material-icons md-13">&#xE0BE;</i>michael.muita.dev@gmail</a>
+    <a class="brand-lower mdl-color-text--orange-600" href="https://blog.michaelmuita.me" target="_blank"><i class="material-icons md-13">&#xE157;</i>blog.michaelmuita.me</a>
+    </header>
 
     <nav class="mdl-navigation mdl-color--blue-grey-800 custom-navigation">
       <a class="mdl-navigation__link" href="#skills"><i class="material-icons orange-600" role="presentation">
@@ -60,13 +62,19 @@
       resume below. You can pretty easily figure out what each section will
       display by looking at the id or at what's written between the <h2> tags.
       -->
-      <header id="header" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+      <header id="header" class="mdl-card mdl-cell mdl-layout--small-screen-only mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <ul id="topContacts" class="flex-box"></ul>
       </header>
       <section id="skills" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
             &#xE869;</i>SKILLS</h2>
+        </div>
+        <div class="skills-holder mdl-card__actions mdl-card--border">
+          <!-- Skills List -->
+          <div class="skills-list"></div>
+          <!-- Skills Chart -->
+          <canvas id="skills-chart" width="300" height="300"></canvas>
         </div>
       </section>
       <section id="workExperience" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
@@ -87,7 +95,7 @@
             &#xE86E;</i>EDUCATION</h2>
         </div>
       </section>
-      <section id="map" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <section id="mapDiv" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">&#xE56A;</i>WHERE I'VE LIVED AND WORKED</h2>
         </div>
@@ -124,11 +132,12 @@ dynamically when this website, index.html, is opened -->
 
 <!-- build:js js/combined.min.js -->
 <script src="js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 <script src="js/helper.js"></script>
 <script src="js/resumeBuilder.js"></script>
 <!-- endbuild -->
 
-<script src="https://storage.googleapis.com/code.getmdl.io/1.1.0/material.min.js"></script>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.min.js"></script>
 
 <!--
 These scripts are written in JavaScript. You'll be breaking them down as part of
@@ -139,43 +148,37 @@ course.
 -->
 
 
-<!-- Not used, commenting out for documentation archives
+ <!--Not used, commenting out for documentation archives-->
 
-  <script type="text/javascript">
-    // Notice how all of a sudden there's JavaScript inside this HTML
-    // document? You can write JavaScript between <script> tags. At the end of your
-    // JavaScript, don't forget the closing script tag with the slash (/).
-
-
-    // Also, this is a JavaScript style comment. You can comment in JavaScript with:
-
-    //   two slashes for all following characters on a single line, or
-
-    /*
-        an opening and closing set of slash asterisks for block comments.
-    */
-
+  <!--<script type="text/javascript">
 
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
+//      document.getElementById('topContacts').style.display = 'none';
+      document.getElementById('topContacts').style.background = 'black';
     }
     if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
+//      document.getElementById('header').style.display = 'none';
+      document.getElementById('header').style.background = 'black';
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
+//      document.getElementById('workExperience').style.display = 'none';
+      document.getElementById('workExperience').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
+//      document.getElementById('projects').style.display = 'none';
+      document.getElementById('projects').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+//      document.getElementById('education').style.display = 'none';
+      document.getElementById('education').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.display = 'none';
+//      document.getElementById('lets-connect').style.display = 'none';
+      document.getElementById('lets-connect').style.backgroundColor = 'black';
     }
     if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.display = 'none';
+//      document.getElementById('mapDiv').style.display = 'none';
+      document.getElementById('mapDiv').style.backgroundColor = 'black';
     }
   </script> -->
 </body>
