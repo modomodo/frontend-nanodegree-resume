@@ -1,17 +1,3 @@
-/*
-
-This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
-Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
-Cameron Pittman
-*/
-
-
-/*
-These are HTML strings. As part of the course, you'll be using JavaScript functions
-replace the %data% placeholder text you see in them.
-*/
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
 var HTMLheaderFName = '<h1 id="first-name">%data%</h1>';
 var HTMLheaderlName = '<h1 id="last-name">%data%</h1>';
@@ -32,30 +18,32 @@ var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry mdl-card__actions mdl-card--border"></div>';
-var HTMLworkEmployer = '<a href="#">%data%';
-var HTMLworkTitle = '<span class="work-title">%data%</span>';
-var HTMLworkDates = '<p>%data%</p>';
+var HTMLworkEmployer = '<a href="#" class="info-head inline-block">%data%';
+var HTMLworkTitle = '<span class="info-title info-head block">%data%</span>';
+var HTMLworkDates = '<span class="info-head block">%data%</span>';
 var HTMLworkLocation = ' - %data%</a>';
-var HTMLworkDescription = '<p>%data%</p>';
+var HTMLworkDescription = '<p class="text-justify mdl-card__supporting-text">%data%</p>';
 
-var HTMLprojectStart = '<div class="project-entry"></div>';
-var HTMLprojectTitle = '<a href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<p><br>%data%</p>';
-var HTMLprojectImage = '<img src="%data%">';
+var HTMLprojectStart = '<div class="project-entry mdl-cell--6-col-desktop"></div>';
+var HTMLprojectTitle = '<span class="info-title info-head block text-center">%data%</span>';
+var HTMLprojectDates = '<span class="info-head block text-center">%data%</span>';
+var HTMLprojectDescription = '<p class="text-center mdl-card__supporting-text">%data%</p>';
+var HTMLprojectImage = '<img src="%data%" class="project-image">';
+var HTMLprojectDemo = '<a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-600 mdl-color-text--blue-grey-50" target="_blank">Demo</a>';
+var HTMLprojectGithub = '<a href="#" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--orange-600 mdl-color-text--blue-grey-50" target="_blank">Github</a>';
 
-var HTMLschoolStart = '<div class="education-entry"></div>';
-var HTMLschoolName = '<a href="#">%data%';
-var HTMLschoolDegree = ' -- %data%</a>';
-var HTMLschoolDates = '<div class="date-text">%data%</div>';
-var HTMLschoolLocation = '<div class="location-text">%data%</div>';
-var HTMLschoolMajor = '<em><br>Major: %data%</em>';
+var HTMLschoolStart = '<div class="education-entry mdl-grid"></div>';
+var HTMLschoolName = '<span class="school-title info-head mdl-cell--3-col-phone mdl-cell--6-col-tablet mdl-cell--9-col-desktop">%data%';
+var HTMLschoolDegree = '<i class="school-aside mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">%data%</i>';
+var HTMLschoolDates = '<i class="school-aside mdl-cell--1-col-phone mdl-cell--2-col-tablet mdl-cell--3-col-desktop">%data%</i>';
+var HTMLschoolLocation = ' - %data%</span>';
+var HTMLschoolMajor = '<a href="#" class="info-head inline-block mdl-cell--3-col-phone mdl-cell--6-col-tablet mdl-cell--9-col-desktop" target="_blank">%data%</a>';
 
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
-var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
+var HTMLonlineStart = '<div class="online-entry mdl-grid"></div>';
+var HTMLonlineClasses = '<h4 class="online-title"><i class="material-icons">&#xE02F;</i>Online Classes</h4>';
+var HTMLonlineTitle = '<span class="school-title info-head block mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop" target="_blank">%data%</span>';
+var HTMLonlineSchool = '<a href="#" class="info-head inline-block mdl-cell--2-col-phone mdl-cell--5-col-tablet mdl-cell--8-col-desktop" target="_blank">%data%</a>';
+var HTMLonlineDates = '<i class="school-aside mdl-cell--2-col-phone mdl-cell--3-col-tablet mdl-cell--4-col-desktop">%data%</i>';
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map"></div>';
@@ -67,7 +55,8 @@ The International Name challenge in Lesson 2 where you'll create a function that
 $(document).ready(function() {
   $('button').click(function() {
     var iName = inName() || function(){};
-    $('#name').html(iName);  
+    $('#name').html(iName);
+    $('#main')
   });
 });
 
@@ -88,6 +77,10 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  logClicks(x, y);
 });
 
 

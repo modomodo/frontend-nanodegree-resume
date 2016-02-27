@@ -18,7 +18,7 @@ var polarSkills = [
     highlight: "#42A5F5"
   },
   {
-    value: 7,
+    value: 6,
     label: 'JavaScript',
     color: '#FFC107',
     highlight: '#FFCA28'
@@ -36,7 +36,7 @@ var polarSkills = [
     highlight: '#7E57C2'
   },
   {
-    value: 4,
+    value: 3,
     label: 'WordPress',
     color: '#3F51B5',
     highlight: '#5C6BC0'
@@ -57,11 +57,11 @@ var polarSkills = [
 
 // Function to display the list of skill labels
 var skillsChartLegend = function () {
-  for (skill in polarSkills) {
-      var skillLabel = polarSkills[skill].label;
-      var skillColor = polarSkills[skill].color;
-      var skillHTML = '<span class="label" style="background-color: ' + skillColor + '">' + skillLabel + '</span>';
-      $(".skills-list").append(skillHTML);
+  for (var skill in polarSkills) {
+    var skillLabel = polarSkills[skill].label;
+    var skillColor = polarSkills[skill].color;
+    var skillHTML = '<span class="label" style="background-color: ' + skillColor + '">' + skillLabel + '</span>';
+    $(".skills-list").append(skillHTML);
   }
 };
 
@@ -144,31 +144,36 @@ var work = {
     "url": "http://www.securex.co.ke/",
     "years": "2011",
     "location": "Westlands, Nairobi",
-    "description": "Trained in ISO management – This entailed linking operations between various departments in the company and applying my knowledge of computers through assisting in troubleshooting computer systems between the departments. Additionally, hands-on work through each department"
+    "description": "Trained in ISO management – This entailed linking operations between various departments in the company and applying my knowledge of computers to assist in troubleshooting computer systems between the departments. Additionally, I performed hands-on work through each department"
   }
 };
 
-work.display = function() {
+work.display = function () {
+  //Add work-entry div to work section
   $("#workExperience").append(HTMLworkStart);
 
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs.employer) + HTMLworkLocation.replace("%data%", work.jobs.location);
+  //Format employer details to include location and a link
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs.employer)
+      .replace("#", work.jobs.url)
+    + HTMLworkLocation.replace("%data%", work.jobs.location);
 
+  //Add all work details
   $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs.title))
-                       .append(formattedEmployer)
-                       .append(HTMLworkDates.replace("%data%", work.jobs.years))
-                       .append(HTMLworkDescription.replace("%data%", work.jobs.description));
+    .append(formattedEmployer)
+    .append(HTMLworkDates.replace("%data%", work.jobs.years))
+    .append(HTMLworkDescription.replace("%data%", work.jobs.description));
 
 };
 
 var education = {
   "schools": [
     {
-      "name": "The University of Nottingham",
+      "name": "The University of Nottingham, Malaysia Campus",
       "location": "Semenyih, Malaysia",
       "degree": "Bachelors",
       "majors": "BSc(Hons) Software Engineering",
       "years": "2012 - 2015",
-      "url": "http://www.nottingham.edu.my/index.aspx"
+      "url": "http://www.nottingham.edu.my/Study/Undergraduate-courses/Computer-Science/Software-Engineering-BSc-Hons.aspx"
     },
     {
       "name": "Aga Khan Academy",
@@ -176,29 +181,62 @@ var education = {
       "degree": "Diploma",
       "majors": "International Baccalaureate",
       "years": "2010 - 2012",
-      "url": "http://www.agakhanschools.org/kenya/akan/"
+      "url": "http://www.agakhanschools.org/kenya/akan/curriculum.asp"
     }
   ],
   "onlineCourses": [
     {
       "title": "PHP Development",
       "school": "Treehouse",
-      "years": 2015,
-      "url": "http://teamtreehouse.com/home"
+      "years": "August 2015 - October 2015",
+      "url": "https://teamtreehouse.com/michaelmugo"
     },
     {
       "title": "Front-End Web Developer Nanodegree",
       "school": "Udacity",
-      "years": "2015 - 2016",
+      "years": "December 2015 - July 2016",
       "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     },
     {
       "title": "Web Development",
       "school": "CodeSchool",
-      "years": "2015 - 2016",
-      "url": "https://www.codeschool.com"
+      "years": "August 2015 - August 2016",
+      "url": "https://www.codeschool.com/users/1707790"
     }
   ]
+};
+
+education.display = function () {
+
+  var educationHolder = $(".education-holder");
+
+  for (var school in education.schools) {
+    //Add education-entry div to education section
+    educationHolder.append(HTMLschoolStart);
+
+    //Format School Details
+    var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name)
+      + HTMLschoolLocation.replace("%data%", education.schools[school].location);
+
+    $(".education-entry:last").append(formattedSchool)
+      .append(HTMLschoolDegree.replace("%data%", education.schools[school].degree))
+      .append(HTMLschoolMajor.replace("%data%", education.schools[school].majors).replace("#", education.schools[school].url))
+      .append(HTMLschoolDates.replace("%data%", education.schools[school].years));
+  }
+
+  educationHolder.append(HTMLonlineClasses);
+  for (var course in education.onlineCourses) {
+    //Add online-entry div to education section
+    educationHolder.append(HTMLonlineStart);
+
+    //Format online School details
+    var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school)
+      .replace("#", education.onlineCourses[course].url);
+
+    $(".online-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
+    .append(formattedOnlineSchool)
+    .append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].years));
+  }
 };
 
 var projects = {
@@ -207,21 +245,64 @@ var projects = {
       "title": "Bootstrap Blast-Off",
       "dates": "Jan 2016 - Feb 2016",
       "description": "A CodeSchool practice project on the Bootstrap CSS Framework",
-      "images": [
-        //TODO: Add image paths
-      ],
-      "url": "http://modomodo-bootstrap-blastoff.bitballoon.com/"
+      "images": ["img/bootstrap-blastoff-16_9-w_320.png"],
+      "url": "http://modomodo-bootstrap-blastoff.bitballoon.com/",
+      "github": "https://github.com/modomodo/bootstrap-blastoff"
     },
     {
       "title": "Ribbit Design Agency",
       "dates": "Nov 2015",
       "description": "A Practice Challenge of basic Front-End skills",
-      "images": [
-        //TODO: Add image paths
-      ],
-      "url": " http://modomodo-ribbit.bitballoon.com/"
+      "images": ["img/ribbit-design-page-16_9-w_320.png"],
+      "url": "http://modomodo-ribbit.bitballoon.com/",
+      "github": "https://github.com/modomodo/ribbit-design-agency"
+    },
+    {
+      "title": "Portfolio Demonstration",
+      "dates": "Jan 2016",
+      "description": "First Project of Udacity's FEND program, making use of the Bootstrap CSS Framework",
+      "images": ["img/p2-320w.png"],
+      "url": "http://modomodo-p2.bitballoon.com/",
+      "github": "https://github.com/modomodo/FE-Nanodegree-Project-1"
+    },
+    {
+      "title": "African Short Stories",
+      "dates": "Nov 2015",
+      "description": "First HTML & CSS project",
+      "images": ["img/african-stories-16_9-w_320.png"],
+      "url": "http://modomodo-african-short-stories.bitballoon.com/",
+      "github": "https://github.com/modomodo/African-Short-Stories"
     }
   ]
+};
+
+projects.display = function () {
+  "use strict";
+  for (var project in projects.projects) {
+    //Add project-entry div to projects section
+    $(".project-holder").append(HTMLprojectStart);
+
+    var lastProjectEntry = $(".project-entry:last");
+
+    //Add images conditionally
+    if (projects.projects[project].images.length > 0) {
+      for (var image in projects.projects[project].images) {
+        lastProjectEntry.append(HTMLprojectImage.replace("%data%", projects.projects[project].images[image]))
+      }
+    }
+
+    //Add information on Project title, date & description
+    lastProjectEntry.append(HTMLprojectTitle.replace("%data%", projects.projects[project].title))
+      .append(HTMLprojectDates.replace("%data%", projects.projects[project].dates))
+      .append(HTMLprojectDescription.replace("%data%", projects.projects[project].description))
+
+    // Display demo or github info if existing
+    if (projects.projects[project].url != undefined)
+      lastProjectEntry.append(HTMLprojectDemo.replace("#", projects.projects[project].url));
+    if (projects.projects[project].github != undefined)
+      lastProjectEntry.append(HTMLprojectGithub.replace("#", projects.projects[project].github));
+
+  }
 };
 
 if (bio.skills.length > 0) {
@@ -233,3 +314,10 @@ if (bio.skills.length > 0) {
 }
 
 work.display();
+projects.display();
+education.display();
+
+//-----
+// MAP
+//-----
+$("#map").append(googleMap);

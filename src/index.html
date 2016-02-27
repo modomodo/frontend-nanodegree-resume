@@ -6,16 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link src="http://overpass-30e2.kxcdn.com/overpass.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic" rel="stylesheet" type="text/css">
   <title>Resume</title>
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.grey-indigo.min.css">
   <link rel="stylesheet" href="css/main.css">
-  <!--
-  Uncomment the <script> tag below when you're ready to add an interactive
-  Google Map to your resume!
-  -->
-  <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
 </head>
 
 <body>
@@ -42,13 +36,14 @@
     <nav class="mdl-navigation mdl-color--blue-grey-800 custom-navigation">
       <a class="mdl-navigation__link" href="#skills"><i class="material-icons orange-600" role="presentation">
         &#xE869;</i>Skills</a>
+      <a class="mdl-navigation__link" href="#education"><i class="material-icons orange-600" role="presentation">
+        &#xE86E;</i>Education</a>
       <a class="mdl-navigation__link" href="#workExperience"><i class="material-icons orange-600" role="presentation">
         &#xE8F9;</i>Work Experience</a>
       <a class="mdl-navigation__link" href="#projects"><i class="material-icons orange-600" role="presentation">
         &#xE226;</i>Projects</a>
-      <a class="mdl-navigation__link" href="#education"><i class="material-icons orange-600" role="presentation">
-        &#xE86E;</i>Education</a>
-      <a class="mdl-navigation__link" href="#map"><i class="material-icons orange-600" role="presentation">&#xE56A;</i>Locations</a>
+
+      <a class="mdl-navigation__link" href="#mapDiv"><i class="material-icons orange-600" role="presentation">&#xE56A;</i>Locations</a>
       <a class="mdl-navigation__link" href="#lets-connect"><i class="material-icons orange-600" role="presentation">
         &#xE7FB;</i>Social</a>
     </nav>
@@ -56,12 +51,6 @@
 
   <main id="main" class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid grid-max-width">
-      <!--
-      Everything from here to the <script> tag below is the skeleton of your
-      website. Your code will add information to each of the sections of the
-      resume below. You can pretty easily figure out what each section will
-      display by looking at the id or at what's written between the <h2> tags.
-      -->
       <header id="header" class="mdl-card mdl-cell mdl-layout--small-screen-only mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <ul id="topContacts" class="flex-box"></ul>
       </header>
@@ -77,6 +66,14 @@
           <canvas id="skills-chart" width="300" height="300"></canvas>
         </div>
       </section>
+      <section id="education" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE86E;</i>EDUCATION</h2>
+        </div>
+        <div class="education-holder mdl-card__actions mdl-card--border mdl-grid">
+        </div>
+      </section>
       <section id="workExperience" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
@@ -85,14 +82,9 @@
       </section>
       <section id="projects" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
-            &#xE226;</i>PROJECTS</h2>
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">&#xE226;</i>PROJECTS</h2>
         </div>
-      </section>
-      <section id="education" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
-            &#xE86E;</i>EDUCATION</h2>
+        <div class="project-holder mdl-card__actions mdl-card--border mdl-grid">
         </div>
       </section>
       <section id="mapDiv" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
@@ -109,26 +101,6 @@
     </footer>
   </main>
 </div>
-<!--
-jQuery is a common JavaScript library for reading and making changes to the
-Document Object Model (DOM). The DOM is a tree that contains information
-about what is actually visible on a website.
-
-While HTML is a static document, the browser converts HTML to the
-DOM and the DOM can change. In fact, JavaScript's power comes from
-its ability to manipulate the DOM, which is essentially a JavaScript
-object. When JavaScript makes something interesting happen on a
-website, it's likely the action happened because JavaScript changed
-the DOM. jQuery is fast and easy to use, but it doesn't do anything
-you can't accomplish with vanilla (regular) JavaScript.
--->
-
-<!-- More on helper.js in the  -->
-
-<!--
-The next line tells the browser where to download the JavaScript file you'll be
-writing. In resumeBuilder.js, you'll be writing code that builds the resume
-dynamically when this website, index.html, is opened -->
 
 <!-- build:js js/combined.min.js -->
 <script src="js/jquery.min.js"></script>
@@ -138,6 +110,8 @@ dynamically when this website, index.html, is opened -->
 <!-- endbuild -->
 
 <script src="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCteqJ8weTqsE_N3BbUmtPp0sG9p-Xmfgo&libraries=places"></script>
+
 
 <!--
 These scripts are written in JavaScript. You'll be breaking them down as part of
