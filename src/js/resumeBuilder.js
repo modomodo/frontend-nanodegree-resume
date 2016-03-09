@@ -124,8 +124,11 @@ $(document).ready(function () {
 var bio = {
   "name": "Michael Muita",
   "role": "Full-Stack Engineer",
-  "welcomeMessage": "I am a lover of all things tech, especially on the mobile, security and web front.<br><br>My goals are to work with and understand the intricacies of various mobile and web architectures, with the ultimate goal being to analyse and determine their security weaknesses, while seeking to improve on them",
-  "bioPic": "img/avatar.png",
+  "welcomeMessage": "I am a lover of all things tech, especially on the mobile, security and web front.<br><br>" +
+  "My goals are to work with and understand the intricacies of various mobile and web architectures with the " +
+  "ultimate goal being to analyse and determine their security vulnerabilities, areas of improvements, and seeking " +
+  "to provide solutions",
+  "biopic": "img/avatar.png",
   "contacts": {
     "mobile": "tel:+000000000",
     "email": "michael.muita.dev[at]gmail",
@@ -141,13 +144,18 @@ var bio = {
 bio.display = function () {
   "use strict";
 
-  $(".custom-drawer-header").append(HTMLbioPic.replace("%data%", bio.bioPic))
+  //Add the Bio Information to the drawer header
+  $(".custom-drawer-header").append(HTMLbioPic.replace("%data%", bio.biopic))
     .append(HTMLheaderName.replace("%data%", bio.name))
     .append(HTMLemailDrawer.replace("%data%", bio.contacts.email).replace("#", "mailto:michael.muita.dev@gmail.com"))
     .append(HTMLblogDrawer.replace("%data%", bio.contacts.blog).replace("#", bio.contacts.blog));
+
+  //Add the about information to the about section
   $(".about-holder").append(HTMLaboutMsg.replace("%data%", bio.welcomeMessage));
+
+  //Add the footer social contact bio
   $("#lets-connect").append(HTMLfooterListStart);
-    $(".mdl-mini-footer__link-list").append(HTMLemail.replace("#", "mailto:michael.muita.dev@gmail.com"))
+  $(".mdl-mini-footer__link-list").append(HTMLemail.replace("#", "mailto:michael.muita.dev@gmail.com"))
     .append(HTMLgithub.replace("#", bio.contacts.github))
     .append(HTMLtwitter.replace("#", bio.contacts.twitter))
     .append(HTMLlinkedIn.replace("#", bio.contacts.linkedin))
@@ -160,7 +168,7 @@ var work = {
       "employer": "Securex Agencies Ltd",
       "title": "ISO Management Trainee",
       "url": "http://www.securex.co.ke/",
-      "years": "2011",
+      "dates": "2011",
       "location": "Westlands, Nairobi",
       "description": "Trained in ISO management – This entailed linking operations between various departments in the company and applying my knowledge of computers to assist in troubleshooting computer systems between the departments. Additionally, I performed hands-on work through each department"
     }
@@ -168,6 +176,7 @@ var work = {
 };
 
 work.display = function () {
+  "use strict";
 
   for (var job in work.jobs) {
     //Add work-entry div to work section
@@ -181,7 +190,7 @@ work.display = function () {
     //Add all work details
     $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[job].title))
       .append(formattedEmployer)
-      .append(HTMLworkDates.replace("%data%", work.jobs[job].years))
+      .append(HTMLworkDates.replace("%data%", work.jobs[job].dates))
       .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
   }
 
@@ -190,19 +199,21 @@ work.display = function () {
 var education = {
   "schools": [
     {
-      "name": "The University of Nottingham, Malaysia Campus",
-      "location": "Semenyih, Malaysia",
+      "name": "The University of Nottingham",
+      "edu-location": "Malaysia",
+      "location": "Kuala Lumpur, Malaysia",
       "degree": "Bachelors",
-      "majors": "BSc(Hons) Software Engineering",
-      "years": "2012 - 2015",
+      "majors": ["BSc(Hons) Software Engineering"],
+      "dates": "2012 - 2015",
       "url": "http://www.nottingham.edu.my/Study/Undergraduate-courses/Computer-Science/Software-Engineering-BSc-Hons.aspx"
     },
     {
       "name": "Aga Khan Academy",
+      "edu-location": "Kenya",
       "location": "Nairobi, Kenya",
       "degree": "Diploma",
-      "majors": "International Baccalaureate",
-      "years": "2010 - 2012",
+      "majors": ["International Baccalaureate"],
+      "dates": "2010 - 2012",
       "url": "http://www.agakhanschools.org/kenya/akan/curriculum.asp"
     }
   ],
@@ -210,19 +221,19 @@ var education = {
     {
       "title": "PHP Development",
       "school": "Treehouse",
-      "years": "August 2015 - October 2015",
+      "date": "August 2015 - October 2015",
       "url": "https://teamtreehouse.com/michaelmugo"
     },
     {
       "title": "Front-End Web Developer Nanodegree",
       "school": "Udacity",
-      "years": "December 2015 - July 2016",
+      "date": "December 2015 - July 2016",
       "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     },
     {
       "title": "Web Development",
       "school": "CodeSchool",
-      "years": "August 2015 - August 2016",
+      "date": "August 2015 - August 2016",
       "url": "https://www.codeschool.com/users/1707790"
     }
   ]
@@ -234,17 +245,28 @@ education.display = function () {
   var educationHolder = $(".education-holder");
 
   for (var school in education.schools) {
+
     //Add education-entry div to education section
     educationHolder.append(HTMLschoolStart);
 
+    var lastEducationEntry = $(".education-entry:last");
+
     //Format School Details
     var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name)
-      + HTMLschoolLocation.replace("%data%", education.schools[school].location);
+      + HTMLschoolLocation.replace("%data%", education.schools[school]["edu-location"]);
 
-    $(".education-entry:last").append(formattedSchool)
-      .append(HTMLschoolDegree.replace("%data%", education.schools[school].degree))
-      .append(HTMLschoolMajor.replace("%data%", education.schools[school].majors).replace("#", education.schools[school].url))
-      .append(HTMLschoolDates.replace("%data%", education.schools[school].years));
+    lastEducationEntry.append(formattedSchool)
+      .append(HTMLschoolDegree.replace("%data%", education.schools[school].degree));
+
+    //Loop through majors array for every school
+    for (var major in education.schools[school].majors) {
+      lastEducationEntry.append(
+        HTMLschoolMajor.replace("%data%", education.schools[school].majors[major])
+          .replace("#", education.schools[school].url)
+      );
+    }
+
+    lastEducationEntry.append(HTMLschoolDates.replace("%data%", education.schools[school].dates));
   }
 
   educationHolder.append(HTMLonlineClasses);
@@ -258,7 +280,7 @@ education.display = function () {
 
     $(".online-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
       .append(formattedOnlineSchool)
-      .append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].years));
+      .append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].date));
   }
 };
 

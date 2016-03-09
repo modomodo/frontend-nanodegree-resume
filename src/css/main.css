@@ -201,10 +201,8 @@ CUSTOM ICON STYLES
 }
 
 .about-message {
-  font-family: "Handlee", cursive;
   color: #ffa726;
-  font-weight: 600;
-  font-size: 22px;
+  font-size: 18px;
   justify-content: center;
 }
 
