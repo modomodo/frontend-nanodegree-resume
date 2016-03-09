@@ -1,18 +1,18 @@
-var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderFName = '<h1 id="first-name">%data%</h1>';
-var HTMLheaderlName = '<h1 id="last-name">%data%</h1>';
+var HTMLheaderName = '<span class="brand-upper">%data%</span>';
 var HTMLheaderRole = '<span>%data%</span>';
 
-var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
-var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
-var HTMLemail = '<li class="flex-item"><span class="orange-text">email</span><span class="white-text">%data%</span></li>';
-var HTMLtwitter = '<li class="flex-item"><span class="orange-text">twitter</span><span class="white-text">%data%</span></li>';
-var HTMLgithub = '<li class="flex-item"><span class="orange-text">github</span><span class="white-text">%data%</span></li>';
-var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
+var HTMLemailDrawer = '<a class="brand-lower mdl-color-text--orange-600" href="#"><i class="material-icons md-13">&#xE0BE;</i>%data%</a>';
+var HTMLblogDrawer = '<a class="brand-lower mdl-color-text--orange-600" href="#" target="_blank"><i class="material-icons md-13">&#xE157;</i>blog.michaelmuita.me</a>';
+
+var HTMLfooterListStart = '<ul class="mdl-mini-footer__link-list"></ul>';
+var HTMLemail = '<li><a href="#"><i class="material-icons orange-600 md-48">&#xE0BE;</i></a></li>';
+var HTMLtwitter = '<li><a href="#" target="_blank"><i class="fa fa-twitter fa-2x orange-600"></i></a></li>';
+var HTMLgithub = '<li><a href="#" target="_blank"><i class="fa fa-github-alt fa-2x orange-600"></i></a></li>';
+var HTMLlinkedIn = '<li><a href="#" target="_blank"><i class="fa fa-linkedin fa-2x orange-600"></i></a></li>';
 var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</span><span class="white-text">%data%</span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic">';
-var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
+var HTMLbioPic = '<img src="%data%" class="avatar" alt="Profile Pic">';
+var HTMLaboutMsg = '<span class="about-message">%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skills-h3">Skills at a Glance:</h3><ul id="skills" class="flex-box"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="white-text">%data%</span></li>';
@@ -24,7 +24,7 @@ var HTMLworkDates = '<span class="info-head block">%data%</span>';
 var HTMLworkLocation = ' - %data%</a>';
 var HTMLworkDescription = '<p class="text-justify mdl-card__supporting-text">%data%</p>';
 
-var HTMLprojectStart = '<div class="project-entry mdl-cell--6-col-desktop"></div>';
+var HTMLprojectStart = '<div class="project-entry mdl-cell--4-col-tablet mdl-cell--6-col-desktop"></div>';
 var HTMLprojectTitle = '<span class="info-title info-head block text-center">%data%</span>';
 var HTMLprojectDates = '<span class="info-head block text-center">%data%</span>';
 var HTMLprojectDescription = '<p class="text-center mdl-card__supporting-text">%data%</p>';
@@ -46,7 +46,7 @@ var HTMLonlineSchool = '<a href="#" class="info-head inline-block mdl-cell--2-co
 var HTMLonlineDates = '<i class="school-aside mdl-cell--2-col-phone mdl-cell--3-col-tablet mdl-cell--4-col-desktop">%data%</i>';
 
 var internationalizeButton = '<button>Internationalize</button>';
-var googleMap = '<div id="map"></div>';
+var googleMap = '<div id="map" class="mdl-card__actions mdl-card--border"></div>';
 
 
 /*
@@ -169,9 +169,9 @@ function initializeMap() {
       content: name
     });
 
-    // hmmmm, I wonder what this is about...
+    // Add markers to the map
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.
@@ -228,16 +228,12 @@ function initializeMap() {
 
 }
 
-/*
-Uncomment the code below when you're ready to implement a Google Map!
-*/
-
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});

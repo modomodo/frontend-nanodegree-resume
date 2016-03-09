@@ -57,6 +57,7 @@ var polarSkills = [
 
 // Function to display the list of skill labels
 var skillsChartLegend = function () {
+  "use strict";
   for (var skill in polarSkills) {
     var skillLabel = polarSkills[skill].label;
     var skillColor = polarSkills[skill].color;
@@ -121,13 +122,13 @@ $(document).ready(function () {
 });
 
 var bio = {
-  "firstName": "Michael",
-  "lastName": "Muita",
+  "name": "Michael Muita",
   "role": "Full-Stack Engineer",
-  "welcomeMessage": "I am a lover of all things tech, especially on the mobile, security and web front. My goals are to work with and understand the intricacies of various mobile and web architectures, with the ultimate goal being to analyse and determine their security weaknesses",
+  "welcomeMessage": "I am a lover of all things tech, especially on the mobile, security and web front.<br><br>My goals are to work with and understand the intricacies of various mobile and web architectures, with the ultimate goal being to analyse and determine their security weaknesses, while seeking to improve on them",
+  "bioPic": "img/avatar.png",
   "contacts": {
-    "mobile": "tel:+254790406319",
-    "email": "mailto:michael.muita.dev@gmail.com",
+    "mobile": "tel:+000000000",
+    "email": "michael.muita.dev[at]gmail",
     "github": "https://github.com/modomodo",
     "twitter": "https://twitter.com/Modomodo3",
     "linkedin": "https://ke.linkedin.com/in/michaelmuita",
@@ -137,31 +138,52 @@ var bio = {
   "skills": ["HTML5", "CSS", "JavaScript", "jQuery", "PHP", "WordPress", "SQL", "Git"]
 };
 
+bio.display = function () {
+  "use strict";
+
+  $(".custom-drawer-header").append(HTMLbioPic.replace("%data%", bio.bioPic))
+    .append(HTMLheaderName.replace("%data%", bio.name))
+    .append(HTMLemailDrawer.replace("%data%", bio.contacts.email).replace("#", "mailto:michael.muita.dev@gmail.com"))
+    .append(HTMLblogDrawer.replace("%data%", bio.contacts.blog).replace("#", bio.contacts.blog));
+  $(".about-holder").append(HTMLaboutMsg.replace("%data%", bio.welcomeMessage));
+  $("#lets-connect").append(HTMLfooterListStart);
+    $(".mdl-mini-footer__link-list").append(HTMLemail.replace("#", "mailto:michael.muita.dev@gmail.com"))
+    .append(HTMLgithub.replace("#", bio.contacts.github))
+    .append(HTMLtwitter.replace("#", bio.contacts.twitter))
+    .append(HTMLlinkedIn.replace("#", bio.contacts.linkedin))
+
+};
+
 var work = {
-  "jobs": {
-    "employer": "Securex Agencies Ltd",
-    "title": "ISO Management Trainee",
-    "url": "http://www.securex.co.ke/",
-    "years": "2011",
-    "location": "Westlands, Nairobi",
-    "description": "Trained in ISO management – This entailed linking operations between various departments in the company and applying my knowledge of computers to assist in troubleshooting computer systems between the departments. Additionally, I performed hands-on work through each department"
-  }
+  "jobs": [
+    {
+      "employer": "Securex Agencies Ltd",
+      "title": "ISO Management Trainee",
+      "url": "http://www.securex.co.ke/",
+      "years": "2011",
+      "location": "Westlands, Nairobi",
+      "description": "Trained in ISO management – This entailed linking operations between various departments in the company and applying my knowledge of computers to assist in troubleshooting computer systems between the departments. Additionally, I performed hands-on work through each department"
+    }
+  ]
 };
 
 work.display = function () {
-  //Add work-entry div to work section
-  $("#workExperience").append(HTMLworkStart);
 
-  //Format employer details to include location and a link
-  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs.employer)
-      .replace("#", work.jobs.url)
-    + HTMLworkLocation.replace("%data%", work.jobs.location);
+  for (var job in work.jobs) {
+    //Add work-entry div to work section
+    $("#workExperience").append(HTMLworkStart);
 
-  //Add all work details
-  $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs.title))
-    .append(formattedEmployer)
-    .append(HTMLworkDates.replace("%data%", work.jobs.years))
-    .append(HTMLworkDescription.replace("%data%", work.jobs.description));
+    //Format employer details to include location and a link
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer)
+        .replace("#", work.jobs[job].url)
+      + HTMLworkLocation.replace("%data%", work.jobs[job].location);
+
+    //Add all work details
+    $(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[job].title))
+      .append(formattedEmployer)
+      .append(HTMLworkDates.replace("%data%", work.jobs[job].years))
+      .append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+  }
 
 };
 
@@ -207,6 +229,7 @@ var education = {
 };
 
 education.display = function () {
+  "use strict";
 
   var educationHolder = $(".education-holder");
 
@@ -234,8 +257,8 @@ education.display = function () {
       .replace("#", education.onlineCourses[course].url);
 
     $(".online-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
-    .append(formattedOnlineSchool)
-    .append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].years));
+      .append(formattedOnlineSchool)
+      .append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].years));
   }
 };
 
@@ -252,7 +275,7 @@ var projects = {
     {
       "title": "Ribbit Design Agency",
       "dates": "Nov 2015",
-      "description": "A Practice Challenge of basic Front-End skills",
+      "description": "A Practice Challenge of basic Front-End skills<br><br>",
       "images": ["img/ribbit-design-page-16_9-w_320.png"],
       "url": "http://modomodo-ribbit.bitballoon.com/",
       "github": "https://github.com/modomodo/ribbit-design-agency"
@@ -268,7 +291,7 @@ var projects = {
     {
       "title": "African Short Stories",
       "dates": "Nov 2015",
-      "description": "First HTML & CSS project",
+      "description": "First HTML & CSS project<br><br>",
       "images": ["img/african-stories-16_9-w_320.png"],
       "url": "http://modomodo-african-short-stories.bitballoon.com/",
       "github": "https://github.com/modomodo/African-Short-Stories"
@@ -278,6 +301,7 @@ var projects = {
 
 projects.display = function () {
   "use strict";
+
   for (var project in projects.projects) {
     //Add project-entry div to projects section
     $(".project-holder").append(HTMLprojectStart);
@@ -305,14 +329,7 @@ projects.display = function () {
   }
 };
 
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
-
-  for (var index = 0; index < bio.skills.length; index++) {
-    $("#skills").append(HTMLskills.replace("%data%", bio.skills[index]));
-  }
-}
-
+bio.display();
 work.display();
 projects.display();
 education.display();
@@ -320,4 +337,4 @@ education.display();
 //-----
 // MAP
 //-----
-$("#map").append(googleMap);
+$("#mapDiv").append(googleMap);

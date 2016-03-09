@@ -161,6 +161,11 @@ DRAWER STYLES
 /*******************
 CUSTOM ICON STYLES
 ********************/
+.material-icons.md-36 { font-size: 36px; }
+
+.orange-600 {
+  color: #ffa726;
+}
 
 .brand-lower .material-icons {
   margin-right: 8px;
@@ -190,8 +195,20 @@ CUSTOM ICON STYLES
 /**********************
   BODY STYLING
 **********************/
+/* ABOUT STYLES */
+#about .mdl-card__title-text{
+  color: white;
+}
 
-/*SKILLS CHART*/
+.about-message {
+  font-family: "Handlee", cursive;
+  color: #ffa726;
+  font-weight: 600;
+  font-size: 22px;
+  justify-content: center;
+}
+
+/* SKILLS CHART */
 .skills-holder {
   text-align: center;
 }
@@ -276,6 +293,27 @@ CUSTOM ICON STYLES
   margin: 0 30px 20px;
 }
 
+/* MAP STYLES */
+#map {
+  width: 100%;
+  height: 400px;
+}
+
+/* SOCIAL STYLES */
+#lets-connect {
+  text-align: center;
+}
+
+.mdl-mini-footer__link-list {
+  width: 100%;
+  margin: auto;
+}
+
+.mdl-mini-footer__link-list li {
+  padding: 0 20px;
+  text-align: center;
+}
+
 /************************
   FLOATING TO-TOP BUTTON
 ************************/
@@ -284,7 +322,7 @@ CUSTOM ICON STYLES
   position: fixed;
   right: 0;
   bottom: 0;
-  margin-right: 40px;
-  margin-bottom: 40px;
+  margin-right: 20px;
+  margin-bottom: 65px;
   z-index: 900;
 }

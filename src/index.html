@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- This tells the browser how to read the document. -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic" rel="stylesheet" type="text/css">
-  <title>Resume</title>
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.grey-indigo.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Handlee%7CRoboto:400,300,300italic,500,400italic,700,700italic"
+        rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <title>Résumé</title>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.1.2/material.grey-indigo.min.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
 
-<a href="#" class="to-top mdl-button mdl-button--fab mdl-js-button mdl-js-ripple-effect mdl-color--orange-600 mdl-color-text--blue-grey-50"><i class="material-icons">keyboard_arrow_up</i></a>
+<a href="#"
+   class="to-top mdl-button mdl-button--fab mdl-button--mini-fab mdl-js-button mdl-js-ripple-effect mdl-color--orange-600 mdl-color-text--blue-grey-50"><i
+  class="material-icons">keyboard_arrow_up</i></a>
 
 <div class="custom-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
@@ -25,15 +28,12 @@
   </header>
 
   <div class="custom-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-    <header class="custom-drawer-header mdl-layout--large-screen-only">
-    <img src="img/user.jpg" class="avatar" alt="Profile Pic">
-    <span class="brand-upper" itemprop="name">Michael Muita</span>
-    <a href="tel:+254790406319" class="brand-lower mdl-color-text--orange-600"><i class="material-icons md-13">&#xE0CD;</i>+254790406319</a>
-    <a class="brand-lower mdl-color-text--orange-600" href="mailto:michael.muita.dev@gmail.com" itemprop="email"><i class="material-icons md-13">&#xE0BE;</i>michael.muita.dev@gmail</a>
-    <a class="brand-lower mdl-color-text--orange-600" href="https://blog.michaelmuita.me" target="_blank"><i class="material-icons md-13">&#xE157;</i>blog.michaelmuita.me</a>
+    <header class="custom-drawer-header">
     </header>
 
     <nav class="mdl-navigation mdl-color--blue-grey-800 custom-navigation">
+      <a class="mdl-navigation__link" href="#about"><i class="material-icons orange-600" role="presentation">
+        &#xE90D;</i>About</a>
       <a class="mdl-navigation__link" href="#skills"><i class="material-icons orange-600" role="presentation">
         &#xE869;</i>Skills</a>
       <a class="mdl-navigation__link" href="#education"><i class="material-icons orange-600" role="presentation">
@@ -42,8 +42,8 @@
         &#xE8F9;</i>Work Experience</a>
       <a class="mdl-navigation__link" href="#projects"><i class="material-icons orange-600" role="presentation">
         &#xE226;</i>Projects</a>
-
-      <a class="mdl-navigation__link" href="#mapDiv"><i class="material-icons orange-600" role="presentation">&#xE56A;</i>Locations</a>
+      <a class="mdl-navigation__link" href="#mapDiv"><i class="material-icons orange-600" role="presentation">
+        &#xE56A;</i>Locations</a>
       <a class="mdl-navigation__link" href="#lets-connect"><i class="material-icons orange-600" role="presentation">
         &#xE7FB;</i>Social</a>
     </nav>
@@ -51,10 +51,15 @@
 
   <main id="main" class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid grid-max-width">
-      <header id="header" class="mdl-card mdl-cell mdl-layout--small-screen-only mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <ul id="topContacts" class="flex-box"></ul>
-      </header>
-      <section id="skills" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <section id="about" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
+            &#xE90D;</i>ABOUT</h2>
+        </div>
+        <div class="about-holder mdl-card__actions mdl-card--border">
+        </div>
+      </section>
+      <section id="skills" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
             &#xE869;</i>SKILLS</h2>
@@ -66,7 +71,7 @@
           <canvas id="skills-chart" width="300" height="300"></canvas>
         </div>
       </section>
-      <section id="education" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <section id="education" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
             &#xE86E;</i>EDUCATION</h2>
@@ -74,7 +79,7 @@
         <div class="education-holder mdl-card__actions mdl-card--border mdl-grid">
         </div>
       </section>
-      <section id="workExperience" class="gray mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
+      <section id="workExperience" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
           <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">
             &#xE8F9;</i>WORK EXPERIENCE</h2>
@@ -89,71 +94,26 @@
       </section>
       <section id="mapDiv" class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
         <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">&#xE56A;</i>WHERE I'VE LIVED AND WORKED</h2>
+          <h2 class="mdl-card__title-text"><i class="material-icons" role="presentation">&#xE56A;</i>WHERE I'VE LIVED
+            AND WORKED</h2>
         </div>
       </section>
-      <h2 class="orange center-text">LET'S CONNECT</h2>
 
     </div>
-    <footer id="lets-connect" class="mdl-mini-footer dark-gray">
-      <ul id="footerContacts" class="flex-box">
-      </ul>
+    <footer id="lets-connect" class="mdl-mini-footer mdl-color--blue-grey-800">
     </footer>
   </main>
 </div>
 
-<!-- build:js js/combined.min.js -->
-<script src="js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.2.1.min.js"><\/script>')</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<!-- build:js js/combined.min.js -->
 <script src="js/helper.js"></script>
 <script src="js/resumeBuilder.js"></script>
 <!-- endbuild -->
+<script src="https://storage.googleapis.com/code.getmdl.io/1.1.2/material.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initializeMap&libraries=places" async defer></script>
 
-<script src="https://storage.googleapis.com/code.getmdl.io/1.1.1/material.min.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCteqJ8weTqsE_N3BbUmtPp0sG9p-Xmfgo&libraries=places"></script>
-
-
-<!--
-These scripts are written in JavaScript. You'll be breaking them down as part of
-a quiz. Essentially, the next few lines are checking to see if you have not
-changed each section of the resume. If you have not made any changes to a section
-of the resume, then that part of the resume does not show up. More on this in the
-course.
--->
-
-
- <!--Not used, commenting out for documentation archives-->
-
-  <!--<script type="text/javascript">
-
-    if(document.getElementsByClassName('flex-item').length === 0) {
-//      document.getElementById('topContacts').style.display = 'none';
-      document.getElementById('topContacts').style.background = 'black';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-//      document.getElementById('header').style.display = 'none';
-      document.getElementById('header').style.background = 'black';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-//      document.getElementById('workExperience').style.display = 'none';
-      document.getElementById('workExperience').style.backgroundColor = 'black';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-//      document.getElementById('projects').style.display = 'none';
-      document.getElementById('projects').style.backgroundColor = 'black';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-//      document.getElementById('education').style.display = 'none';
-      document.getElementById('education').style.backgroundColor = 'black';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-//      document.getElementById('lets-connect').style.display = 'none';
-      document.getElementById('lets-connect').style.backgroundColor = 'black';
-    }
-    if(document.getElementById('map') === null) {
-//      document.getElementById('mapDiv').style.display = 'none';
-      document.getElementById('mapDiv').style.backgroundColor = 'black';
-    }
-  </script> -->
 </body>
 </html>
